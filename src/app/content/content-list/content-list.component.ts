@@ -13,6 +13,8 @@ export class ContentListComponent {
     { id: 1, name: 'aaa', videoId: 'XhzRWckACOo' },
     { id: 2, name: 'bbb', videoId: 'XhzRWckACOo' },
     { id: 3, name: 'ccc', videoId: 'XhzRWckACOo' },
+    { id: 4, name: 'ccc', videoId: 'XhzRWckACOo' },
+    { id: 5, name: 'ccc', videoId: 'XhzRWckACOo' },
   ];
 
   constructor(private sanitizer: DomSanitizer) { }

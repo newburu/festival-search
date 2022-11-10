@@ -5,6 +5,17 @@
     flex-wrap: wrap;
 }
 
+#contents {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 .panel {
     width: 33%;
     margin: 0.5em 0;
@@ -38,6 +49,8 @@
     padding: 0;
 }
 
-.panel>iframe {
-    width: 100%;
+.panel {
+    iframe {
+        width: 100%;
+    }
 }
