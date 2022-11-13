@@ -1,12 +1,14 @@
 export class Content {
   id: number;
   name: string;
-  videoId: string;
+  key: string;
+  path: string;
 
   constructor() {
     this.id = 0;
     this.name = "";
-    this.videoId = "";
+    this.key = "";
+    this.path = "";
   }
 
 }

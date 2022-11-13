@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Content } from '../content';
+import { ContentService } from '../content.service';
+
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
@@ -8,19 +10,28 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./content-list.component.scss']
 })
 
-export class ContentListComponent {
+export class ContentListComponent implements OnInit {
   contents: Content[] = [
-    { id: 1, name: 'aaa', videoId: 'XhzRWckACOo' },
-    { id: 2, name: 'bbb', videoId: 'XhzRWckACOo' },
-    { id: 3, name: 'ccc', videoId: 'XhzRWckACOo' },
-    { id: 4, name: 'ccc', videoId: 'XhzRWckACOo' },
-    { id: 5, name: 'ccc', videoId: 'XhzRWckACOo' },
+    { id: 1, name: 'aaa', key: 'wZQoiJZpToI', path: 'https://www.youtube.com/embed/wZQoiJZpToI' },
+    { id: 2, name: 'bbb', key: 'wZQoiJZpToI', path: 'https://www.youtube.com/watch?v=wZQoiJZpToI' },
+    { id: 3, name: 'ccc', key: 'wZQoiJZpToI', path: 'https://www.youtube.com/watch?v=wZQoiJZpToI' },
+    { id: 4, name: 'ccc', key: 'wZQoiJZpToI', path: 'https://www.youtube.com/watch?v=wZQoiJZpToI' },
+    { id: 5, name: 'ccc', key: 'wZQoiJZpToI', path: 'https://www.youtube.com/watch?v=wZQoiJZpToI' },
   ];
 
-  constructor(private sanitizer: DomSanitizer) { }
+  constructor(
+    private sanitizer: DomSanitizer,
+    private service: ContentService
+  ) { }
 
+  ngOnInit(): void {
+    this.service.getContents().subscribe(res => {
+      console.log(res);
+      this.contents = res;
+    });
+  }
   getVideoUrl(content: Content){
-    return this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/" + content.videoId);
+    return this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/" + content.key);
   }
 
 }
