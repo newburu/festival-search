@@ -12,6 +12,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 export class ContentListComponent implements OnInit {
   contents: Content[] = [];
+  items: number = 20;
+  page: number = 1;
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -19,13 +21,20 @@ export class ContentListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.service.getContents().subscribe(res => {
-      console.log(res);
-      this.contents = res;
-    });
-  }
-  getVideoUrl(content: Content){
-    return this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/" + content.key);
+    this.addContent();
   }
 
+  addContent(): void {
+    this.service.getContents(this.items, this.page).subscribe(res => {
+      this.contents = this.contents.concat(res);
+    });
+    this.page++;
+  }
+
+  getVideoUrl(content: Content) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/" + content.key);
+  }
+  onScroll() {
+    this.addContent();
+  }
 }
