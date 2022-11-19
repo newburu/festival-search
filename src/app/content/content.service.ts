@@ -13,8 +13,8 @@ export class ContentService {
     private http: HttpClient
   ) { }
 
-  getContents(): Observable<Content[]> {
-    return this.http.get<Content[]>(`${this.url}/contents/searchYouTube`)
+  getContents(items: number, page: number): Observable<Content[]> {
+    return this.http.get<Content[]>(`${this.url}/contents/searchYouTube?items=${items}&page=${page}`)
       .pipe(
         catchError(this.handleError('getContents', []))
       );
