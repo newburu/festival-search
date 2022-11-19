@@ -1,1 +1,15 @@
 <h1>Contents</h1>
+
+<div id="contents">
+  <div class="panel" *ngFor="let content of contents">
+    <div class="panel-header">
+    </div>
+    <div class="panel-body">
+      <iframe [src]="getVideoUrl(content)" frameborder=0 gesture='media' allow='encrypted-media' allowfullscreen=true>
+    </iframe>
+    </div>
+    <div class="panel-footer">
+      {{content.name}}
+    </div>
+  </div>
+</div>
