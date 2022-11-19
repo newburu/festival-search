@@ -11,13 +11,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 
 export class ContentListComponent implements OnInit {
-  contents: Content[] = [
-    { id: 1, name: 'aaa', key: 'wZQoiJZpToI', path: 'https://www.youtube.com/embed/wZQoiJZpToI' },
-    { id: 2, name: 'bbb', key: 'wZQoiJZpToI', path: 'https://www.youtube.com/watch?v=wZQoiJZpToI' },
-    { id: 3, name: 'ccc', key: 'wZQoiJZpToI', path: 'https://www.youtube.com/watch?v=wZQoiJZpToI' },
-    { id: 4, name: 'ccc', key: 'wZQoiJZpToI', path: 'https://www.youtube.com/watch?v=wZQoiJZpToI' },
-    { id: 5, name: 'ccc', key: 'wZQoiJZpToI', path: 'https://www.youtube.com/watch?v=wZQoiJZpToI' },
-  ];
+  contents: Content[] = [];
 
   constructor(
     private sanitizer: DomSanitizer,
