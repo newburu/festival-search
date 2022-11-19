@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ContentListComponent } from './content/content-list/content-list.component';
 
 import { ContentService } from './content/content.service';
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ContentService } from './content/content.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    InfiniteScrollModule,
   ],
   providers: [ContentService],
   bootstrap: [AppComponent]
